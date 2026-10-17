@@ -27,7 +27,12 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm test
+      - run: npm run typecheck:functions
       - run: npm run build
+        env:
+          # Repository variables (Settings → Secrets and variables → Actions → Variables).
+          VITE_SUPABASE_URL: ${{ vars.SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ vars.SUPABASE_ANON_KEY }}
       - uses: actions/upload-pages-artifact@v3
         if: github.ref == 'refs/heads/main'
         with:
@@ -43,3 +48,35 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # Deploys the admin server function and its secrets to Supabase.
+  # Skipped until the SUPABASE_ACCESS_TOKEN secret exists (see SETUP.md).
+  deploy-backend:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      PROJECT_REF: ${{ vars.SUPABASE_PROJECT_REF }}
+      ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+        if: env.SUPABASE_ACCESS_TOKEN != ''
+      - uses: supabase/setup-cli@v1
+        if: env.SUPABASE_ACCESS_TOKEN != ''
+        with:
+          version: latest
+      - name: Set function secrets
+        if: env.SUPABASE_ACCESS_TOKEN != ''
+        run: |
+          : > "$RUNNER_TEMP/secrets.env"
+          [ -n "$ADMIN_PASSWORD" ] && printf 'ADMIN_PASSWORD=%s\n' "$ADMIN_PASSWORD" >> "$RUNNER_TEMP/secrets.env"
+          [ -n "$ANTHROPIC_API_KEY" ] && printf 'ANTHROPIC_API_KEY=%s\n' "$ANTHROPIC_API_KEY" >> "$RUNNER_TEMP/secrets.env"
+          if [ -s "$RUNNER_TEMP/secrets.env" ]; then
+            supabase secrets set --project-ref "$PROJECT_REF" --env-file "$RUNNER_TEMP/secrets.env"
+          fi
+          rm "$RUNNER_TEMP/secrets.env"
+      - name: Deploy admin function
+        if: env.SUPABASE_ACCESS_TOKEN != ''
+        run: supabase functions deploy admin --project-ref "$PROJECT_REF" --no-verify-jwt

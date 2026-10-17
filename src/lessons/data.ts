@@ -1,4 +1,3 @@
-import type { InstrumentId } from '../instruments'
 import type { Lesson } from './types'
 
 // Built-in starter lessons. The admin panel (step 3) will add, edit and generate more.
@@ -208,11 +207,3 @@ export const LESSONS: Lesson[] = [
     ],
   },
 ]
-
-export function lessonsFor(instrument: InstrumentId): Lesson[] {
-  return LESSONS.filter((l) => l.instrument === instrument)
-}
-
-export function getLesson(id: string): Lesson | undefined {
-  return LESSONS.find((l) => l.id === id)
-}
