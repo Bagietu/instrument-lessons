@@ -16,15 +16,26 @@ export interface MicPitch {
 const BUFFER_SIZE = 4096
 const MIN_CLARITY = 0.85
 
-/** Listens to the microphone and reports the pitch being played or sung. */
-export function useMicPitch(options: DetectOptions = {}): MicPitch {
+export interface MicFrame {
+  time: number
+  frequency: number | null
+  volume: number
+}
+
+/**
+ * Listens to the microphone and reports the pitch being played or sung.
+ * `onFrame` gets every analysed frame (~60 per second) without re-rendering.
+ */
+export function useMicPitch(options: DetectOptions = {}, onFrame?: (frame: MicFrame) => void): MicPitch {
   const [status, setStatus] = useState<MicStatus>('idle')
   const [frequency, setFrequency] = useState<number | null>(null)
   const [volume, setVolume] = useState(0)
 
   const optionsRef = useRef(options)
+  const onFrameRef = useRef(onFrame)
   useEffect(() => {
     optionsRef.current = options
+    onFrameRef.current = onFrame
   })
   const cleanupRef = useRef<(() => void) | null>(null)
 
@@ -68,7 +79,8 @@ export function useMicPitch(options: DetectOptions = {}): MicPitch {
 
     const tick = () => {
       analyser.getFloatTimeDomainData(buffer)
-      setVolume(Math.min(1, rms(buffer) * 4))
+      const level = Math.min(1, rms(buffer) * 4)
+      setVolume(level)
       const result = detectPitch(buffer, context.sampleRate, optionsRef.current)
       if (result && result.clarity >= MIN_CLARITY) {
         missed = 0
@@ -80,6 +92,7 @@ export function useMicPitch(options: DetectOptions = {}): MicPitch {
         smoothed = null
         setFrequency(null)
       }
+      onFrameRef.current?.({ time: performance.now(), frequency: missed === 0 ? smoothed : null, volume: level })
       frame = requestAnimationFrame(tick)
     }
     frame = requestAnimationFrame(tick)
