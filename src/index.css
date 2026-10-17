@@ -150,3 +150,45 @@ h2 { font-size: 1.15rem; margin: 28px 0 12px; }
 .row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
 a.button { display: inline-block; }
 .big-check { font-size: 3rem; color: var(--good); }
+
+/* ---------- Admin ---------- */
+.footer { margin-top: 48px; text-align: center; font-size: 0.85rem; }
+.footer a { color: var(--muted); }
+.muted { color: var(--muted); }
+.small-text { font-size: 0.82rem; }
+code { font-size: 0.9em; background: var(--border); padding: 1px 5px; border-radius: 5px; }
+
+.panel + .panel, .panel + div, .notice + .panel { margin-top: 16px; }
+.notice { padding: 10px 14px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); }
+.notice.good { color: var(--good); }
+.notice.error { color: var(--danger); }
+
+label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 0.9rem; }
+label small { font-weight: 400; color: var(--muted); }
+input, select, textarea {
+  font: inherit; font-weight: 400; color: var(--text); background: var(--bg);
+  border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; width: 100%;
+}
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+textarea { resize: vertical; }
+
+.login { display: flex; flex-direction: column; gap: 14px; max-width: 360px; }
+.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 14px; }
+.form-grid .wide { grid-column: 1 / -1; }
+
+.button.small { padding: 8px 14px; font-size: 0.9rem; }
+.row.left { justify-content: flex-start; }
+.row.tight { gap: 4px; margin: 0; flex-wrap: nowrap; }
+.icon-button {
+  font: inherit; display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 10px;
+  border: 1px solid var(--border); background: var(--surface); color: var(--text); cursor: pointer;
+}
+.icon-button:disabled { opacity: 0.35; cursor: default; }
+.icon-button.danger { color: var(--danger); }
+.admin-row { gap: 10px; }
+
+.editor h3 { margin: 22px 0 10px; }
+.step-editor { display: flex; flex-direction: column; gap: 8px; padding: 14px; margin-bottom: 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; }
+.step-editor-head { display: flex; justify-content: space-between; align-items: center; }
+.notes-input { display: flex; gap: 8px; }
+.errors { color: var(--danger); background: var(--surface); border: 1px solid var(--danger); border-radius: 12px; padding: 10px 14px 10px 30px; }

@@ -4,7 +4,7 @@ import { frequencyToMidi, noteFromLabel } from '../audio/notes'
 import { playReferenceTone } from '../audio/referenceTone'
 import { useMicPitch, type MicFrame, type MicPitch } from '../audio/useMicPitch'
 import { getInstrument } from '../instruments'
-import { lessonsFor } from '../lessons/data'
+import { lessonsFor, useLessons } from '../lessons/store'
 import { describePosition, guitarPosition } from '../lessons/guitar'
 import type { Lesson, NotesStep } from '../lessons/types'
 import { markCompleted } from '../progress'
@@ -164,7 +164,7 @@ function NotesExercise({ lesson, step, mic, listen, onDone }: ExerciseProps) {
 }
 
 function Finished({ lesson }: { lesson: Lesson }) {
-  const list = lessonsFor(lesson.instrument)
+  const list = lessonsFor(useLessons().lessons, lesson.instrument)
   const nextLesson = list[list.findIndex((l) => l.id === lesson.id) + 1]
   return (
     <div className="panel center">

@@ -1,5 +1,6 @@
 import { INSTRUMENTS, getInstrument } from './instruments'
-import { getLesson, lessonsFor } from './lessons/data'
+import { AdminPage } from './admin/AdminPage'
+import { lessonsFor, useLessons } from './lessons/store'
 import { isCompleted } from './progress'
 import { href, useRoute } from './router'
 import { LessonPlayer } from './screens/LessonPlayer'
@@ -7,8 +8,10 @@ import { Tuner } from './screens/Tuner'
 
 export default function App() {
   const [instrumentId, page, lessonId] = useRoute()
+  const store = useLessons()
+  const isAdmin = instrumentId === 'admin'
   const instrument = instrumentId ? getInstrument(instrumentId) : undefined
-  const lesson = page === 'lesson' && lessonId ? getLesson(lessonId) : undefined
+  const lesson = page === 'lesson' && lessonId ? store.lessons.find((l) => l.id === lessonId) : undefined
 
   return (
     <div className="app">
@@ -16,6 +19,11 @@ export default function App() {
         <a href={href()} className="brand">
           🎶 Instrument Lessons
         </a>
+        {isAdmin && (
+          <a href={href()} className="back">
+            ← App
+          </a>
+        )}
         {instrument && (
           <a href={page ? href(instrument.id) : href()} className="back">
             ← Back
@@ -23,11 +31,18 @@ export default function App() {
         )}
       </header>
       <main>
-        {!instrument && <Home />}
+        {isAdmin && <AdminPage />}
+        {!instrument && !isAdmin && <Home />}
         {instrument && !page && <InstrumentHome id={instrument.id} />}
         {instrument && page === 'tuner' && <Tuner key={instrument.id} instrument={instrument} />}
         {lesson && <LessonPlayer key={lesson.id} lesson={lesson} />}
+        {instrument && page === 'lesson' && !lesson && (
+          <p className="muted">{store.loading ? 'Loading lesson…' : 'This lesson doesn’t exist any more.'}</p>
+        )}
       </main>
+      <footer className="footer">
+        <a href={href('admin')}>Admin</a>
+      </footer>
     </div>
   )
 }
@@ -51,6 +66,7 @@ function Home() {
 
 function InstrumentHome({ id }: { id: string }) {
   const instrument = getInstrument(id)!
+  const store = useLessons()
   return (
     <section>
       <h1>
@@ -68,7 +84,8 @@ function InstrumentHome({ id }: { id: string }) {
 
       <h2>Lessons</h2>
       <ol className="lesson-list">
-        {lessonsFor(instrument.id).map((l) => (
+        {store.loading && <li className="muted">Loading lessons…</li>}
+        {lessonsFor(store.lessons, instrument.id).map((l) => (
           <li key={l.id}>
             <a href={href(id, 'lesson', l.id)} className="lesson-row">
               <span className={`lesson-status ${isCompleted(l.id) ? 'done' : ''}`}>{isCompleted(l.id) ? '✓' : ''}</span>

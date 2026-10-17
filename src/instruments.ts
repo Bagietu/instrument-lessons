@@ -1,7 +1,8 @@
 import type { FollowerOptions } from './audio/follower'
 import type { DetectOptions } from './audio/pitch'
 
-export type InstrumentId = 'piano' | 'guitar' | 'voice'
+export type { InstrumentId } from '../supabase/functions/_shared/lesson.ts'
+import type { InstrumentId } from '../supabase/functions/_shared/lesson.ts'
 
 export interface Instrument {
   id: InstrumentId
