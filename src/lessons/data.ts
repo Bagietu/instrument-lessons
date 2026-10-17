@@ -1,0 +1,218 @@
+import type { InstrumentId } from '../instruments'
+import type { Lesson } from './types'
+
+// Built-in starter lessons. The admin panel (step 3) will add, edit and generate more.
+
+export const LESSONS: Lesson[] = [
+  // ---------- Piano ----------
+  {
+    id: 'piano-middle-c',
+    instrument: 'piano',
+    title: 'Meet middle C',
+    description: 'Find the most important key on the piano.',
+    level: 1,
+    steps: [
+      {
+        kind: 'info',
+        title: 'Finding middle C',
+        text: 'Black keys come in groups of two and three. The white key just left of a group of two black keys is C. The C nearest the middle of your piano is middle C. Put your right thumb on it.',
+      },
+      { kind: 'notes', instruction: 'Play middle C three times with your thumb.', notes: ['C4', 'C4', 'C4'], hints: ['1', '1', '1'] },
+    ],
+  },
+  {
+    id: 'piano-cde',
+    instrument: 'piano',
+    title: 'C, D and E',
+    description: 'Your first three fingers, your first three notes.',
+    level: 1,
+    steps: [
+      {
+        kind: 'info',
+        text: 'Keep your thumb (finger 1) on C, then rest finger 2 on D and finger 3 on E. Fingers stay curved, like holding a small ball.',
+      },
+      { kind: 'notes', instruction: 'Play up: C, D, E.', notes: ['C4', 'D4', 'E4'], hints: ['1', '2', '3'] },
+      { kind: 'notes', instruction: 'Now back down: E, D, C.', notes: ['E4', 'D4', 'C4'], hints: ['3', '2', '1'] },
+    ],
+  },
+  {
+    id: 'piano-five-finger',
+    instrument: 'piano',
+    title: 'Five-finger position',
+    description: 'One finger per key from C to G.',
+    level: 1,
+    steps: [
+      { kind: 'info', text: 'Add finger 4 on F and finger 5 (your pinky) on G. This is C position: every finger has its own key.' },
+      { kind: 'notes', instruction: 'Walk up from C to G.', notes: ['C4', 'D4', 'E4', 'F4', 'G4'], hints: ['1', '2', '3', '4', '5'] },
+      { kind: 'notes', instruction: 'And back down to C.', notes: ['G4', 'F4', 'E4', 'D4', 'C4'], hints: ['5', '4', '3', '2', '1'] },
+    ],
+  },
+  {
+    id: 'piano-mary',
+    instrument: 'piano',
+    title: 'Mary Had a Little Lamb',
+    description: 'Your first song, using C, D, E and G.',
+    level: 1,
+    steps: [
+      { kind: 'notes', instruction: 'First line', notes: ['E4', 'D4', 'C4', 'D4', 'E4', 'E4', 'E4'], hints: ['Ma', 'ry', 'had', 'a', 'lit', 'tle', 'lamb'] },
+      { kind: 'notes', instruction: 'Second line', notes: ['D4', 'D4', 'D4', 'E4', 'G4', 'G4'], hints: ['lit', 'tle', 'lamb', 'lit', 'tle', 'lamb'] },
+      { kind: 'notes', instruction: 'Third line', notes: ['E4', 'D4', 'C4', 'D4', 'E4', 'E4', 'E4', 'E4'], hints: ['Ma', 'ry', 'had', 'a', 'lit', 'tle', 'lamb, its', 'fleece'] },
+      { kind: 'notes', instruction: 'Last line', notes: ['D4', 'D4', 'E4', 'D4', 'C4'], hints: ['was', 'white', 'as', 'snow', '…'] },
+    ],
+  },
+  {
+    id: 'piano-ode-to-joy',
+    instrument: 'piano',
+    title: 'Ode to Joy',
+    description: 'Beethoven’s famous melody, all in C position.',
+    level: 2,
+    steps: [
+      { kind: 'notes', instruction: 'Phrase 1', notes: ['E4', 'E4', 'F4', 'G4', 'G4', 'F4', 'E4', 'D4'], hints: ['3', '3', '4', '5', '5', '4', '3', '2'] },
+      { kind: 'notes', instruction: 'Phrase 2', notes: ['C4', 'C4', 'D4', 'E4', 'E4', 'D4', 'D4'], hints: ['1', '1', '2', '3', '3', '2', '2'] },
+      { kind: 'notes', instruction: 'Phrase 3', notes: ['E4', 'E4', 'F4', 'G4', 'G4', 'F4', 'E4', 'D4'], hints: ['3', '3', '4', '5', '5', '4', '3', '2'] },
+      { kind: 'notes', instruction: 'Phrase 4', notes: ['C4', 'C4', 'D4', 'E4', 'D4', 'C4', 'C4'], hints: ['1', '1', '2', '3', '2', '1', '1'] },
+    ],
+  },
+
+  // ---------- Guitar ----------
+  {
+    id: 'guitar-open-strings',
+    instrument: 'guitar',
+    title: 'The six open strings',
+    description: 'Learn the names of the strings by playing them.',
+    level: 1,
+    steps: [
+      {
+        kind: 'info',
+        title: 'Tune first',
+        text: 'Use the tuner to get each string in tune before you start. From the thickest string to the thinnest they are E, A, D, G, B, E. A way to remember: Eddie Ate Dynamite, Good Bye Eddie.',
+      },
+      { kind: 'notes', instruction: 'Pluck each open string, thickest to thinnest.', notes: ['E2', 'A2', 'D3', 'G3', 'B3', 'E4'] },
+      { kind: 'notes', instruction: 'Now thinnest to thickest.', notes: ['E4', 'B3', 'G3', 'D3', 'A2', 'E2'] },
+    ],
+  },
+  {
+    id: 'guitar-high-e-notes',
+    instrument: 'guitar',
+    title: 'Notes on the high E string',
+    description: 'E, F and G using frets 1 and 3.',
+    level: 1,
+    steps: [
+      {
+        kind: 'info',
+        text: 'Press just behind the metal fret, not on top of it. Use finger 1 for fret 1 and finger 3 for fret 3.',
+      },
+      { kind: 'notes', instruction: 'Play E (open), F (fret 1), G (fret 3).', notes: ['E4', 'F4', 'G4'] },
+      { kind: 'notes', instruction: 'And back down.', notes: ['G4', 'F4', 'E4'] },
+    ],
+  },
+  {
+    id: 'guitar-b-string-notes',
+    instrument: 'guitar',
+    title: 'Notes on the B string',
+    description: 'B, C and D, then mix them with the high E string.',
+    level: 1,
+    steps: [
+      { kind: 'notes', instruction: 'Play B (open), C (fret 1), D (fret 3) on the B string.', notes: ['B3', 'C4', 'D4'] },
+      { kind: 'notes', instruction: 'Walk up across both strings.', notes: ['B3', 'C4', 'D4', 'E4', 'F4', 'G4'] },
+    ],
+  },
+  {
+    id: 'guitar-em-chord',
+    instrument: 'guitar',
+    title: 'Your first chord: E minor',
+    description: 'Two fingers, six strings.',
+    level: 1,
+    steps: [
+      {
+        kind: 'info',
+        title: 'E minor shape',
+        text: 'Put finger 2 on the A string, fret 2, and finger 3 on the D string, fret 2. Every other string is open. The app hears one note at a time, so you will check the chord by plucking each string slowly.',
+      },
+      { kind: 'notes', instruction: 'Hold the shape and pluck each string, thickest first.', notes: ['E2', 'B2', 'E3', 'G3', 'B3', 'E4'] },
+    ],
+  },
+  {
+    id: 'guitar-c-chord',
+    instrument: 'guitar',
+    title: 'C major chord',
+    description: 'Three fingers, five strings.',
+    level: 2,
+    steps: [
+      {
+        kind: 'info',
+        title: 'C major shape',
+        text: 'Finger 3 on the A string, fret 3. Finger 2 on the D string, fret 2. Finger 1 on the B string, fret 1. Don’t play the thick low E string.',
+      },
+      { kind: 'notes', instruction: 'Hold the shape and pluck strings 5 to 1.', notes: ['C3', 'E3', 'G3', 'C4', 'E4'] },
+    ],
+  },
+
+  // ---------- Singing ----------
+  {
+    id: 'voice-match-pitch',
+    instrument: 'voice',
+    title: 'Match a note',
+    description: 'Listen, then sing the same note.',
+    level: 1,
+    steps: [
+      {
+        kind: 'info',
+        title: 'How this works',
+        text: 'Tap “Hear it” to play the note, then sing it back on “ah” or “oo”. Any octave counts, so sing wherever is comfortable. The bar shows if you are too low or too high.',
+      },
+      { kind: 'notes', instruction: 'Sing each note and hold it.', notes: ['C4', 'E4', 'G4'] },
+    ],
+  },
+  {
+    id: 'voice-do-re-mi',
+    instrument: 'voice',
+    title: 'Do, Re, Mi',
+    description: 'The first five notes of the scale.',
+    level: 1,
+    steps: [
+      { kind: 'notes', instruction: 'Sing up the scale.', notes: ['C4', 'D4', 'E4', 'F4', 'G4'], hints: ['Do', 'Re', 'Mi', 'Fa', 'Sol'] },
+      { kind: 'notes', instruction: 'And back down.', notes: ['G4', 'F4', 'E4', 'D4', 'C4'], hints: ['Sol', 'Fa', 'Mi', 'Re', 'Do'] },
+    ],
+  },
+  {
+    id: 'voice-major-scale',
+    instrument: 'voice',
+    title: 'The whole major scale',
+    description: 'All eight notes from Do to Do.',
+    level: 2,
+    steps: [
+      {
+        kind: 'notes',
+        instruction: 'Sing the full scale up.',
+        notes: ['C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C5'],
+        hints: ['Do', 'Re', 'Mi', 'Fa', 'Sol', 'La', 'Ti', 'Do'],
+      },
+      {
+        kind: 'notes',
+        instruction: 'And down again.',
+        notes: ['C5', 'B4', 'A4', 'G4', 'F4', 'E4', 'D4', 'C4'],
+        hints: ['Do', 'Ti', 'La', 'Sol', 'Fa', 'Mi', 'Re', 'Do'],
+      },
+    ],
+  },
+  {
+    id: 'voice-twinkle',
+    instrument: 'voice',
+    title: 'Twinkle Twinkle Little Star',
+    description: 'Put your pitch matching into a song.',
+    level: 2,
+    steps: [
+      { kind: 'notes', instruction: 'Line 1', notes: ['C4', 'C4', 'G4', 'G4', 'A4', 'A4', 'G4'], hints: ['Twin', 'kle', 'twin', 'kle', 'lit', 'tle', 'star'] },
+      { kind: 'notes', instruction: 'Line 2', notes: ['F4', 'F4', 'E4', 'E4', 'D4', 'D4', 'C4'], hints: ['how', 'I', 'won', 'der', 'what', 'you', 'are'] },
+    ],
+  },
+]
+
+export function lessonsFor(instrument: InstrumentId): Lesson[] {
+  return LESSONS.filter((l) => l.instrument === instrument)
+}
+
+export function getLesson(id: string): Lesson | undefined {
+  return LESSONS.find((l) => l.id === id)
+}

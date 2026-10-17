@@ -1,10 +1,14 @@
 import { INSTRUMENTS, getInstrument } from './instruments'
+import { getLesson, lessonsFor } from './lessons/data'
+import { isCompleted } from './progress'
 import { href, useRoute } from './router'
+import { LessonPlayer } from './screens/LessonPlayer'
 import { Tuner } from './screens/Tuner'
 
 export default function App() {
-  const [instrumentId, page] = useRoute()
+  const [instrumentId, page, lessonId] = useRoute()
   const instrument = instrumentId ? getInstrument(instrumentId) : undefined
+  const lesson = page === 'lesson' && lessonId ? getLesson(lessonId) : undefined
 
   return (
     <div className="app">
@@ -22,6 +26,7 @@ export default function App() {
         {!instrument && <Home />}
         {instrument && !page && <InstrumentHome id={instrument.id} />}
         {instrument && page === 'tuner' && <Tuner key={instrument.id} instrument={instrument} />}
+        {lesson && <LessonPlayer key={lesson.id} lesson={lesson} />}
       </main>
     </div>
   )
@@ -59,12 +64,23 @@ function InstrumentHome({ id }: { id: string }) {
             {id === 'voice' ? 'See which note you’re singing' : 'Check the microphone hears you'}
           </span>
         </a>
-        <div className="card disabled">
-          <span className="card-emoji">📚</span>
-          <span className="card-title">Lessons</span>
-          <span className="card-text">Coming soon</span>
-        </div>
       </div>
+
+      <h2>Lessons</h2>
+      <ol className="lesson-list">
+        {lessonsFor(instrument.id).map((l) => (
+          <li key={l.id}>
+            <a href={href(id, 'lesson', l.id)} className="lesson-row">
+              <span className={`lesson-status ${isCompleted(l.id) ? 'done' : ''}`}>{isCompleted(l.id) ? '✓' : ''}</span>
+              <span className="lesson-text">
+                <span className="lesson-title">{l.title}</span>
+                <span className="lesson-desc">{l.description}</span>
+              </span>
+              <span className="lesson-level">Level {l.level}</span>
+            </a>
+          </li>
+        ))}
+      </ol>
     </section>
   )
 }
