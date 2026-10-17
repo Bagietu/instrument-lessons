@@ -1,5 +1,6 @@
-import { INSTRUMENTS, getInstrument } from './instruments'
 import { AdminPage } from './admin/AdminPage'
+import { FloatingNotes } from './fun/FloatingNotes'
+import { INSTRUMENTS, getInstrument, type InstrumentId } from './instruments'
 import { lessonsFor, useLessons } from './lessons/store'
 import { isCompleted } from './progress'
 import { href, useRoute } from './router'
@@ -14,10 +15,11 @@ export default function App() {
   const lesson = page === 'lesson' && lessonId ? store.lessons.find((l) => l.id === lessonId) : undefined
 
   return (
-    <div className="app">
+    <div className="app" data-theme={instrument?.id ?? 'home'}>
+      <FloatingNotes />
       <header className="topbar">
         <a href={href()} className="brand">
-          🎶 Instrument Lessons
+          <span className="brand-icon">🎶</span> Instrument Lessons
         </a>
         {isAdmin && (
           <a href={href()} className="back">
@@ -47,56 +49,105 @@ export default function App() {
   )
 }
 
+function useProgress(instrument: InstrumentId) {
+  const list = lessonsFor(useLessons().lessons, instrument)
+  const done = list.filter((l) => isCompleted(l.id)).length
+  return { list, done, total: list.length, percent: list.length ? (done / list.length) * 100 : 0 }
+}
+
+function ProgressBar({ percent, label }: { percent: number; label: string }) {
+  return (
+    <div className="card-progress">
+      <div className="progress" role="progressbar" aria-valuenow={Math.round(percent)} aria-valuemin={0} aria-valuemax={100}>
+        <div className="progress-bar" style={{ width: `${percent}%` }} />
+      </div>
+      <div className="progress-label">{label}</div>
+    </div>
+  )
+}
+
 function Home() {
   return (
     <section>
-      <h1>What do you want to learn?</h1>
+      <div className="hero">
+        <span className="hero-emoji">🎸🎹🎤</span>
+        <h1>Let’s make some music!</h1>
+        <p>Pick an instrument. Your microphone listens and cheers you on.</p>
+      </div>
       <div className="cards">
         {INSTRUMENTS.map((i) => (
-          <a key={i.id} href={href(i.id)} className="card">
-            <span className="card-emoji">{i.emoji}</span>
-            <span className="card-title">{i.name}</span>
-            <span className="card-text">{i.tagline}</span>
-          </a>
+          <InstrumentCard key={i.id} id={i.id} />
         ))}
       </div>
     </section>
   )
 }
 
-function InstrumentHome({ id }: { id: string }) {
+function InstrumentCard({ id }: { id: InstrumentId }) {
+  const instrument = getInstrument(id)!
+  const { done, total, percent } = useProgress(id)
+  return (
+    <a href={href(id)} className="card instrument" data-theme={id}>
+      <span className="card-emoji">{instrument.emoji}</span>
+      <span className="card-title">{instrument.name}</span>
+      <span className="card-text">{instrument.tagline}</span>
+      <ProgressBar percent={percent} label={done === 0 ? `${total} lessons to explore` : `${done} of ${total} done`} />
+    </a>
+  )
+}
+
+function InstrumentHome({ id }: { id: InstrumentId }) {
   const instrument = getInstrument(id)!
   const store = useLessons()
+  const { list, done, total, percent } = useProgress(id)
+  const nextUp = list.find((l) => !isCompleted(l.id))
+
   return (
     <section>
-      <h1>
-        {instrument.emoji} {instrument.name}
-      </h1>
-      <div className="cards">
-        <a href={href(id, 'tuner')} className="card">
-          <span className="card-emoji">🎯</span>
-          <span className="card-title">{id === 'voice' ? 'Pitch meter' : 'Tuner'}</span>
-          <span className="card-text">
-            {id === 'voice' ? 'See which note you’re singing' : 'Check the microphone hears you'}
-          </span>
-        </a>
+      <div className="banner">
+        <span className="banner-emoji" aria-hidden="true">
+          {instrument.emoji}
+        </span>
+        <h1>{instrument.name}</h1>
+        <p>{done === total && total > 0 ? 'Every lesson done. Legend! 🏆' : instrument.tagline}</p>
+        <ProgressBar percent={percent} label={`${done} of ${total} lessons done`} />
+        {nextUp && (
+          <div className="row left">
+            <a className="button secondary" href={href(id, 'lesson', nextUp.id)}>
+              {done === 0 ? '▶ Start first lesson' : `▶ Continue: ${nextUp.title}`}
+            </a>
+          </div>
+        )}
       </div>
+
+      <a href={href(id, 'tuner')} className="tool-link">
+        <span>🎯</span>
+        <span>
+          {id === 'voice' ? 'Pitch meter' : 'Tuner'}
+          <small>{id === 'voice' ? 'See which note you’re singing' : 'Tune up and check the mic hears you'}</small>
+        </span>
+      </a>
 
       <h2>Lessons</h2>
       <ol className="lesson-list">
         {store.loading && <li className="muted">Loading lessons…</li>}
-        {lessonsFor(store.lessons, instrument.id).map((l) => (
-          <li key={l.id}>
-            <a href={href(id, 'lesson', l.id)} className="lesson-row">
-              <span className={`lesson-status ${isCompleted(l.id) ? 'done' : ''}`}>{isCompleted(l.id) ? '✓' : ''}</span>
-              <span className="lesson-text">
-                <span className="lesson-title">{l.title}</span>
-                <span className="lesson-desc">{l.description}</span>
-              </span>
-              <span className="lesson-level">Level {l.level}</span>
-            </a>
-          </li>
-        ))}
+        {list.map((l, index) => {
+          const completed = isCompleted(l.id)
+          return (
+            <li key={l.id}>
+              <a href={href(id, 'lesson', l.id)} className="lesson-row">
+                <span className={`lesson-status ${completed ? 'done' : ''}`} aria-label={completed ? 'Done' : `Lesson ${index + 1}`}>
+                  {completed ? '★' : index + 1}
+                </span>
+                <span className="lesson-text">
+                  <span className="lesson-title">{l.title}</span>
+                  <span className="lesson-desc">{l.description}</span>
+                </span>
+                <span className="lesson-level">Lv {l.level}</span>
+              </a>
+            </li>
+          )
+        })}
       </ol>
     </section>
   )

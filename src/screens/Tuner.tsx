@@ -57,7 +57,7 @@ export function Tuner({ instrument }: { instrument: Instrument }) {
               {!mic.frequency
                 ? ' '
                 : inTune
-                  ? 'In tune!'
+                  ? 'In tune! 🎯'
                   : cents < 0
                     ? `${-cents} cents flat, go up`
                     : `${cents} cents sharp, go down`}

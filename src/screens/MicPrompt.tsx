@@ -9,11 +9,14 @@ const MESSAGES: Partial<Record<MicStatus, string>> = {
 export function MicPrompt({ status, onStart }: { status: MicStatus; onStart: () => void }) {
   return (
     <div className="mic-prompt">
+      <span className="mic-icon" aria-hidden="true">
+        🎙️
+      </span>
       <p>The app listens through your microphone to hear what you play. Nothing is recorded or sent anywhere.</p>
       {MESSAGES[status] && <p className="error">{MESSAGES[status]}</p>}
       {status !== 'unsupported' && (
         <button className="button" onClick={onStart} disabled={status === 'starting'}>
-          {status === 'starting' ? 'Starting…' : '🎙️ Start listening'}
+          {status === 'starting' ? 'Starting…' : 'Start listening'}
         </button>
       )}
     </div>
