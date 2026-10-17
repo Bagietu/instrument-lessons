@@ -19,11 +19,10 @@ npm run build   # production build into dist/
 - `src/audio/useMicPitch.ts` reads the microphone and feeds it to the detector.
 - `src/instruments.ts` lists the instruments and the pitch range each one listens for.
 - `src/audio/follower.ts` checks the notes of a lesson as they are played.
-- `supabase/functions/_shared/lesson.ts` defines the lesson format and its validation, shared by the app and the server.
-- `supabase/functions/admin/` is the password-protected admin API (save, delete, import, generate with Claude).
-- Lessons load from Supabase when it is connected and has lessons, otherwise from `src/lessons/data.ts`.
+- `src/lessons/lessons.json` holds every lesson; `src/lessons/format.ts` defines the lesson format and its validation.
+- The admin panel (`#/admin`) saves lessons by committing `lessons.json` to this repository, and can draft lessons with Claude.
 - Pages use hash routes (`#/guitar/tuner`, `#/admin`) so they work on GitHub Pages.
 
-To connect the database and admin panel, follow [SETUP.md](SETUP.md).
+To use the admin panel, follow [SETUP.md](SETUP.md).
 
 Every push to `main` is tested and deployed by `.github/workflows/deploy.yml`.

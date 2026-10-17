@@ -1,6 +1,0 @@
-# Only the settings this project relies on. The admin function checks its own
-# password, so it doesn't require a Supabase login token.
-project_id = "instrument-lessons"
-
-[functions.admin]
-verify_jwt = false

@@ -1,5 +1,5 @@
-// Lesson format shared by the web app and the admin server function.
-// Plain TypeScript with no imports, so both Vite and Deno can load it.
+// The lesson format, its validation, and the Claude prompt for generating lessons.
+// Plain TypeScript with no imports.
 
 export type InstrumentId = 'piano' | 'guitar' | 'voice'
 export const INSTRUMENT_IDS: InstrumentId[] = ['piano', 'guitar', 'voice']

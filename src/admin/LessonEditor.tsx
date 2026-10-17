@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { validateLesson } from '../../supabase/functions/_shared/lesson.ts'
+import { validateLesson } from '../lessons/format'
 import { playReferenceTone } from '../audio/referenceTone'
 import { INSTRUMENTS, type InstrumentId } from '../instruments'
 import type { Lesson } from '../lessons/types'
@@ -52,8 +52,7 @@ export function LessonEditor({ initial, originalId, takenIds, onSave, onCancel }
     try {
       await onSave(result.lesson, originalId)
     } catch (err) {
-      const details = (err as { details?: string[] }).details
-      setErrors(details?.length ? details : [err instanceof Error ? err.message : 'Couldn’t save.'])
+      setErrors([err instanceof Error ? err.message : 'Couldn’t save.'])
     } finally {
       setSaving(false)
     }

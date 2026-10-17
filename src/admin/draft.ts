@@ -1,4 +1,4 @@
-import { slugify } from '../../supabase/functions/_shared/lesson.ts'
+import { slugify } from '../lessons/format'
 import type { InstrumentId } from '../instruments'
 import type { Lesson, LessonStep } from '../lessons/types'
 
