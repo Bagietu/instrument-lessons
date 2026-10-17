@@ -27,3 +27,8 @@ export function playReferenceTone(label: string, seconds = 0.9): void {
     osc.stop(now + seconds)
   }
 }
+
+/** A short happy arpeggio for finishing a lesson. */
+export function playCelebration(): void {
+  ;['C5', 'E5', 'G5', 'C6'].forEach((label, i) => setTimeout(() => playReferenceTone(label, 0.35), i * 110))
+}

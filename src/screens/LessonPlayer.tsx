@@ -1,8 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { createFollower, type FollowerState } from '../audio/follower'
 import { frequencyToMidi, noteFromLabel } from '../audio/notes'
-import { playReferenceTone } from '../audio/referenceTone'
+import { playCelebration, playReferenceTone } from '../audio/referenceTone'
 import { useMicPitch, type MicFrame, type MicPitch } from '../audio/useMicPitch'
+import { lessonCheer, stepCheer } from '../fun/cheers'
+import { Confetti } from '../fun/Confetti'
 import { getInstrument } from '../instruments'
 import { lessonsFor, useLessons } from '../lessons/store'
 import { describePosition, guitarPosition } from '../lessons/guitar'
@@ -43,11 +45,14 @@ export function LessonPlayer({ lesson }: { lesson: Lesson }) {
       {done ? (
         <Finished lesson={lesson} />
       ) : step.kind === 'info' ? (
-        <div className="panel">
+        <div className="panel" key={stepIndex}>
+          <span className="info-emoji" aria-hidden="true">
+            💡
+          </span>
           {step.title && <h2>{step.title}</h2>}
           <p className="info-text">{step.text}</p>
           <button className="button" onClick={next}>
-            {isLast ? 'Finish' : 'Got it'}
+            {isLast ? 'Finish 🎉' : 'Got it 👍'}
           </button>
         </div>
       ) : (
@@ -71,6 +76,7 @@ function NotesExercise({ lesson, step, mic, listen, onDone }: ExerciseProps) {
   const [follower] = useState(() => createFollower(step.notes, instrument.follow))
   const [state, setState] = useState<FollowerState>(follower.state)
   const [heardMidi, setHeardMidi] = useState<number | null>(null)
+  const [cheer] = useState(stepCheer)
 
   const onFrame = useCallback((frame: MicFrame) => {
     const before = follower.state
@@ -89,10 +95,11 @@ function NotesExercise({ lesson, step, mic, listen, onDone }: ExerciseProps) {
   if (state.finished) {
     return (
       <div className="panel center">
-        <div className="big-check">✓</div>
-        <p>Nice! {step.notes.length === 1 ? 'Note' : 'All notes'} played.</p>
+        <div className="big-check">🌟</div>
+        <p className="cheer">{cheer}</p>
+        <p className="muted">{step.notes.length === 1 ? 'Note' : `All ${step.notes.length} notes`} played.</p>
         <button className="button" onClick={onDone}>
-          Continue
+          Continue →
         </button>
       </div>
     )
@@ -107,12 +114,12 @@ function NotesExercise({ lesson, step, mic, listen, onDone }: ExerciseProps) {
     cents === null
       ? lesson.instrument === 'voice' ? 'Sing when ready' : 'Play when ready'
       : Math.abs(cents) <= instrument.follow.toleranceCents
-        ? state.holdProgress < 1 && lesson.instrument === 'voice' ? 'That’s it, hold it…' : 'Yes!'
+        ? state.holdProgress < 1 && lesson.instrument === 'voice' ? 'That’s it, hold it…' : 'Yes! ✨'
         : Math.abs(cents) > 250
-          ? 'Not that note'
+          ? 'Hmm, not that one 🤔'
           : cents < 0
-            ? 'A bit higher'
-            : 'A bit lower'
+            ? 'A bit higher ⬆️'
+            : 'A bit lower ⬇️'
 
   return (
     <div className="panel">
@@ -128,7 +135,9 @@ function NotesExercise({ lesson, step, mic, listen, onDone }: ExerciseProps) {
       </div>
 
       <div className="target">
-        <div className="target-note">{targetNote.name}</div>
+        <div className="target-note" key={state.index}>
+          {targetNote.name}
+        </div>
         <div className="target-sub">
           {position ? describePosition(position) : lesson.instrument === 'voice' ? 'Any octave' : targetNote.label}
         </div>
@@ -166,17 +175,21 @@ function NotesExercise({ lesson, step, mic, listen, onDone }: ExerciseProps) {
 function Finished({ lesson }: { lesson: Lesson }) {
   const list = lessonsFor(useLessons().lessons, lesson.instrument)
   const nextLesson = list[list.findIndex((l) => l.id === lesson.id) + 1]
+  const [cheer] = useState(lessonCheer)
+  useEffect(() => playCelebration(), [])
   return (
     <div className="panel center">
-      <div className="big-check">🎉</div>
-      <h2>Lesson complete!</h2>
+      <Confetti />
+      <div className="big-check">🏆</div>
+      <h2 className="cheer">{cheer}</h2>
+      <p className="muted">You finished “{lesson.title}”.</p>
       <div className="row">
         <a className="button secondary" href={href(lesson.instrument)}>
           All lessons
         </a>
         {nextLesson && (
           <a className="button" href={href(lesson.instrument, 'lesson', nextLesson.id)}>
-            Next: {nextLesson.title}
+            Next: {nextLesson.title} →
           </a>
         )}
       </div>
