@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { createFollower, type FollowerState } from '../audio/follower'
 import { frequencyToMidi, noteFromLabel } from '../audio/notes'
-import { playCelebration, playReferenceTone } from '../audio/referenceTone'
+import { isToneSounding, playCelebration, playReferenceTone } from '../audio/referenceTone'
 import { useMicPitch, type MicFrame, type MicPitch } from '../audio/useMicPitch'
 import { lessonCheer, stepCheer } from '../fun/cheers'
 import { Confetti } from '../fun/Confetti'
@@ -11,6 +11,7 @@ import { describePosition, guitarPosition } from '../lessons/guitar'
 import type { Lesson, NotesStep } from '../lessons/types'
 import { markCompleted } from '../progress'
 import { href } from '../router'
+import { Fretboard } from './Fretboard'
 import { Keyboard } from './Keyboard'
 import { MicPrompt } from './MicPrompt'
 
@@ -78,7 +79,9 @@ function NotesExercise({ lesson, step, mic, listen, onDone }: ExerciseProps) {
   const [heardMidi, setHeardMidi] = useState<number | null>(null)
   const [cheer] = useState(stepCheer)
 
-  const onFrame = useCallback((frame: MicFrame) => {
+  const onFrame = useCallback((incoming: MicFrame) => {
+    // Our own "Hear it" tone must not count as the learner playing: treat it as silence.
+    const frame = isToneSounding(incoming.time) ? { ...incoming, frequency: null, volume: 0 } : incoming
     const before = follower.state
     const after = follower.update(frame)
     if (after.index !== before.index || after.holdProgress !== before.holdProgress || after.cents !== before.cents) {
@@ -146,6 +149,7 @@ function NotesExercise({ lesson, step, mic, listen, onDone }: ExerciseProps) {
       {lesson.instrument === 'piano' && (
         <Keyboard from={Math.min(...midis)} to={Math.max(...midis)} target={targetNote.midi} heard={heardMidi} />
       )}
+      {lesson.instrument === 'guitar' && <Fretboard notes={step.notes} target={target} />}
 
       {mic.status !== 'listening' ? (
         <MicPrompt status={mic.status} onStart={mic.start} />

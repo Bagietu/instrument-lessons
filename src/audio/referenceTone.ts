@@ -1,6 +1,16 @@
 import { noteFromLabel } from './notes'
 
 let context: AudioContext | null = null
+let soundingUntil = 0
+
+// The speaker is loud enough for the microphone to hear, so lessons ignore the mic
+// while a tone plays, plus a short tail for the room's echo.
+const ECHO_MS = 300
+
+/** True while one of the app's own tones may still be reaching the microphone. */
+export function isToneSounding(now = performance.now()): boolean {
+  return now < soundingUntil
+}
 
 /** Plays a short, soft tone so the learner can hear the target note. */
 export function playReferenceTone(label: string, seconds = 0.9): void {
@@ -8,6 +18,7 @@ export function playReferenceTone(label: string, seconds = 0.9): void {
   const ctx = context
   void ctx.resume()
   const now = ctx.currentTime
+  soundingUntil = Math.max(soundingUntil, performance.now() + seconds * 1000 + ECHO_MS)
   const gain = ctx.createGain()
   gain.gain.setValueAtTime(0.0001, now)
   gain.gain.exponentialRampToValueAtTime(0.25, now + 0.02)
