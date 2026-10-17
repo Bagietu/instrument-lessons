@@ -1,4 +1,5 @@
 import { AdminPage } from './admin/AdminPage'
+import { HAS_BACKEND } from './config'
 import { FloatingNotes } from './fun/FloatingNotes'
 import { INSTRUMENTS, getInstrument, type InstrumentId } from './instruments'
 import { lessonsFor, useLessons } from './lessons/store'
@@ -42,9 +43,11 @@ export default function App() {
           <p className="muted">{store.loading ? 'Loading lesson…' : 'This lesson doesn’t exist any more.'}</p>
         )}
       </main>
-      <footer className="footer">
-        <a href={href('admin')}>Admin</a>
-      </footer>
+      {HAS_BACKEND && (
+        <footer className="footer">
+          <a href={href('admin')}>Admin</a>
+        </footer>
+      )}
     </div>
   )
 }
