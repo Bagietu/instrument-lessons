@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { buildGenerationPrompt, labelToMidi, validateLesson } from '../../supabase/functions/_shared/lesson.ts'
+import { buildGenerationPrompt, labelToMidi, validateLesson } from './format'
 import { noteFromLabel } from '../audio/notes'
 import { LESSONS } from './data'
 

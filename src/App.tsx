@@ -39,7 +39,7 @@ export default function App() {
         {instrument && page === 'tuner' && <Tuner key={instrument.id} instrument={instrument} />}
         {lesson && <LessonPlayer key={lesson.id} lesson={lesson} />}
         {instrument && page === 'lesson' && !lesson && (
-          <p className="muted">{store.loading ? 'Loading lesson…' : 'This lesson doesn’t exist any more.'}</p>
+          <p className="muted">This lesson doesn’t exist any more.</p>
         )}
       </main>
       <footer className="footer">
@@ -98,7 +98,6 @@ function InstrumentCard({ id }: { id: InstrumentId }) {
 
 function InstrumentHome({ id }: { id: InstrumentId }) {
   const instrument = getInstrument(id)!
-  const store = useLessons()
   const { list, done, total, percent } = useProgress(id)
   const nextUp = list.find((l) => !isCompleted(l.id))
 
@@ -130,7 +129,6 @@ function InstrumentHome({ id }: { id: InstrumentId }) {
 
       <h2>Lessons</h2>
       <ol className="lesson-list">
-        {store.loading && <li className="muted">Loading lessons…</li>}
         {list.map((l, index) => {
           const completed = isCompleted(l.id)
           return (
