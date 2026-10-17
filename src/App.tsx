@@ -44,6 +44,7 @@ export default function App() {
       </main>
       <footer className="footer">
         <a href={href('admin')}>Admin</a>
+        <div className="version">{__APP_VERSION__}</div>
       </footer>
     </div>
   )

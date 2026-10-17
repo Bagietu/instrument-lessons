@@ -1,5 +1,370 @@
 [
   {
+    "id": "guitar-open-strings",
+    "instrument": "guitar",
+    "title": "The six open strings",
+    "description": "Learn the names of the strings by playing them.",
+    "level": 1,
+    "steps": [
+      {
+        "kind": "info",
+        "title": "Tune first",
+        "text": "Use the tuner to get each string in tune before you start. From the thickest string to the thinnest they are E, A, D, G, B, E. A way to remember: Eddie Ate Dynamite, Good Bye Eddie."
+      },
+      {
+        "kind": "notes",
+        "instruction": "Pluck each open string, thickest to thinnest.",
+        "notes": [
+          "E2",
+          "A2",
+          "D3",
+          "G3",
+          "B3",
+          "E4"
+        ]
+      },
+      {
+        "kind": "notes",
+        "instruction": "Now thinnest to thickest.",
+        "notes": [
+          "E4",
+          "B3",
+          "G3",
+          "D3",
+          "A2",
+          "E2"
+        ]
+      }
+    ],
+    "position": 0
+  },
+  {
+    "id": "guitar-high-e-notes",
+    "instrument": "guitar",
+    "title": "Notes on the high E string",
+    "description": "E, F and G using frets 1 and 3.",
+    "level": 1,
+    "steps": [
+      {
+        "kind": "info",
+        "text": "Press just behind the metal fret, not on top of it. Use finger 1 for fret 1 and finger 3 for fret 3."
+      },
+      {
+        "kind": "notes",
+        "instruction": "Play E (open), F (fret 1), G (fret 3).",
+        "notes": [
+          "E4",
+          "F4",
+          "G4"
+        ]
+      },
+      {
+        "kind": "notes",
+        "instruction": "And back down.",
+        "notes": [
+          "G4",
+          "F4",
+          "E4"
+        ]
+      }
+    ],
+    "position": 1
+  },
+  {
+    "id": "guitar-b-string-notes",
+    "instrument": "guitar",
+    "title": "Notes on the B string",
+    "description": "B, C and D, then mix them with the high E string.",
+    "level": 1,
+    "steps": [
+      {
+        "kind": "notes",
+        "instruction": "Play B (open), C (fret 1), D (fret 3) on the B string.",
+        "notes": [
+          "B3",
+          "C4",
+          "D4"
+        ]
+      },
+      {
+        "kind": "notes",
+        "instruction": "Walk up across both strings.",
+        "notes": [
+          "B3",
+          "C4",
+          "D4",
+          "E4",
+          "F4",
+          "G4"
+        ]
+      }
+    ],
+    "position": 2
+  },
+  {
+    "id": "guitar-em-chord",
+    "instrument": "guitar",
+    "title": "Your first chord: E minor",
+    "description": "Two fingers, six strings.",
+    "level": 1,
+    "steps": [
+      {
+        "kind": "info",
+        "title": "E minor shape",
+        "text": "Put finger 2 on the A string, fret 2, and finger 3 on the D string, fret 2. Every other string is open. The app hears one note at a time, so you will check the chord by plucking each string slowly."
+      },
+      {
+        "kind": "notes",
+        "instruction": "Hold the shape and pluck each string, thickest first.",
+        "notes": [
+          "E2",
+          "B2",
+          "E3",
+          "G3",
+          "B3",
+          "E4"
+        ]
+      }
+    ],
+    "position": 3
+  },
+  {
+    "id": "guitar-c-chord",
+    "instrument": "guitar",
+    "title": "C major chord",
+    "description": "Three fingers, five strings.",
+    "level": 2,
+    "steps": [
+      {
+        "kind": "info",
+        "title": "C major shape",
+        "text": "Finger 3 on the A string, fret 3. Finger 2 on the D string, fret 2. Finger 1 on the B string, fret 1. Don’t play the thick low E string."
+      },
+      {
+        "kind": "notes",
+        "instruction": "Hold the shape and pluck strings 5 to 1.",
+        "notes": [
+          "C3",
+          "E3",
+          "G3",
+          "C4",
+          "E4"
+        ]
+      }
+    ],
+    "position": 4
+  },
+  {
+    "id": "guitar-g-string-notes",
+    "instrument": "guitar",
+    "title": "Notes on the G string",
+    "level": 1,
+    "description": "G and A, then link them to the B string.",
+    "steps": [
+      {
+        "kind": "info",
+        "title": "G string",
+        "text": "The G string is the third thinnest. Played open it is G. Finger 2 on fret 2 gives A."
+      },
+      {
+        "kind": "notes",
+        "instruction": "Open G, then A on fret 2",
+        "notes": [
+          "G3",
+          "A3",
+          "G3",
+          "A3"
+        ]
+      },
+      {
+        "kind": "notes",
+        "instruction": "Walk up across two strings",
+        "notes": [
+          "G3",
+          "A3",
+          "B3",
+          "C4",
+          "D4"
+        ]
+      }
+    ],
+    "position": 5
+  },
+  {
+    "id": "guitar-seven-nation-army",
+    "instrument": "guitar",
+    "title": "Seven Nation Army riff",
+    "level": 1,
+    "description": "A famous riff across three strings.",
+    "steps": [
+      {
+        "kind": "info",
+        "title": "Where to play",
+        "text": "Start with E on the D string, fret 2. G is the open G string and D is the open D string. Finish with C and B on the A string, frets 3 and 2."
+      },
+      {
+        "kind": "notes",
+        "instruction": "The riff",
+        "notes": [
+          "E3",
+          "E3",
+          "G3",
+          "E3",
+          "D3",
+          "C3",
+          "B2"
+        ]
+      },
+      {
+        "kind": "notes",
+        "instruction": "Again, a bit faster",
+        "notes": [
+          "E3",
+          "E3",
+          "G3",
+          "E3",
+          "D3",
+          "C3",
+          "B2"
+        ]
+      }
+    ],
+    "position": 6
+  },
+  {
+    "id": "guitar-ode-to-joy",
+    "instrument": "guitar",
+    "title": "Ode to Joy on guitar",
+    "level": 2,
+    "description": "Beethoven on the top two strings.",
+    "steps": [
+      {
+        "kind": "info",
+        "title": "Two strings",
+        "text": "Everything here is on the high E string (E, F, G) and the B string (C, D)."
+      },
+      {
+        "kind": "notes",
+        "instruction": "First line",
+        "notes": [
+          "E4",
+          "E4",
+          "F4",
+          "G4",
+          "G4",
+          "F4",
+          "E4",
+          "D4"
+        ]
+      },
+      {
+        "kind": "notes",
+        "instruction": "Second line",
+        "notes": [
+          "C4",
+          "C4",
+          "D4",
+          "E4",
+          "E4",
+          "D4",
+          "D4"
+        ]
+      },
+      {
+        "kind": "notes",
+        "instruction": "Third line",
+        "notes": [
+          "E4",
+          "E4",
+          "F4",
+          "G4",
+          "G4",
+          "F4",
+          "E4",
+          "D4"
+        ]
+      },
+      {
+        "kind": "notes",
+        "instruction": "Last line",
+        "notes": [
+          "C4",
+          "C4",
+          "D4",
+          "E4",
+          "D4",
+          "C4",
+          "C4"
+        ]
+      }
+    ],
+    "position": 7
+  },
+  {
+    "id": "guitar-g-chord",
+    "instrument": "guitar",
+    "title": "G major chord",
+    "level": 2,
+    "description": "A big, bright chord using all six strings.",
+    "steps": [
+      {
+        "kind": "info",
+        "title": "G shape",
+        "text": "Finger 2 on the low E string, fret 3. Finger 1 on the A string, fret 2. Finger 3 on the high E string, fret 3. The middle three strings stay open."
+      },
+      {
+        "kind": "notes",
+        "instruction": "Pluck each string, thickest first",
+        "notes": [
+          "G2",
+          "B2",
+          "D3",
+          "G3",
+          "B3",
+          "G4"
+        ]
+      },
+      {
+        "kind": "notes",
+        "instruction": "Now from the thinnest down",
+        "notes": [
+          "G4",
+          "B3",
+          "G3",
+          "D3",
+          "B2",
+          "G2"
+        ]
+      }
+    ],
+    "position": 8
+  },
+  {
+    "id": "guitar-d-chord",
+    "instrument": "guitar",
+    "title": "D major chord",
+    "level": 2,
+    "description": "A small chord on the top four strings.",
+    "steps": [
+      {
+        "kind": "info",
+        "title": "D shape",
+        "text": "Play only the four thinnest strings. Finger 1 on the G string, fret 2. Finger 3 on the B string, fret 3. Finger 2 on the high E string, fret 2."
+      },
+      {
+        "kind": "notes",
+        "instruction": "Pluck the four strings",
+        "notes": [
+          "D3",
+          "A3",
+          "D4",
+          "F#4"
+        ]
+      }
+    ],
+    "position": 9
+  },
+  {
     "id": "piano-middle-c",
     "instrument": "piano",
     "title": "Meet middle C",
@@ -317,159 +682,428 @@
     "position": 4
   },
   {
-    "id": "guitar-open-strings",
-    "instrument": "guitar",
-    "title": "The six open strings",
-    "description": "Learn the names of the strings by playing them.",
+    "id": "piano-jingle-bells",
+    "instrument": "piano",
+    "title": "Jingle Bells",
     "level": 1,
+    "description": "The chorus everyone knows, mostly on E.",
     "steps": [
       {
-        "kind": "info",
-        "title": "Tune first",
-        "text": "Use the tuner to get each string in tune before you start. From the thickest string to the thinnest they are E, A, D, G, B, E. A way to remember: Eddie Ate Dynamite, Good Bye Eddie."
-      },
-      {
         "kind": "notes",
-        "instruction": "Pluck each open string, thickest to thinnest.",
+        "instruction": "Jingle bells, jingle bells",
         "notes": [
-          "E2",
-          "A2",
-          "D3",
-          "G3",
-          "B3",
+          "E4",
+          "E4",
+          "E4",
+          "E4",
+          "E4",
           "E4"
+        ],
+        "hints": [
+          "Jin",
+          "gle",
+          "bells,",
+          "jin",
+          "gle",
+          "bells,"
         ]
       },
       {
         "kind": "notes",
-        "instruction": "Now thinnest to thickest.",
+        "instruction": "Jingle all the way",
         "notes": [
           "E4",
-          "B3",
-          "G3",
-          "D3",
-          "A2",
-          "E2"
-        ]
-      }
-    ],
-    "position": 0
-  },
-  {
-    "id": "guitar-high-e-notes",
-    "instrument": "guitar",
-    "title": "Notes on the high E string",
-    "description": "E, F and G using frets 1 and 3.",
-    "level": 1,
-    "steps": [
-      {
-        "kind": "info",
-        "text": "Press just behind the metal fret, not on top of it. Use finger 1 for fret 1 and finger 3 for fret 3."
-      },
-      {
-        "kind": "notes",
-        "instruction": "Play E (open), F (fret 1), G (fret 3).",
-        "notes": [
-          "E4",
-          "F4",
-          "G4"
-        ]
-      },
-      {
-        "kind": "notes",
-        "instruction": "And back down.",
-        "notes": [
           "G4",
-          "F4",
-          "E4"
-        ]
-      }
-    ],
-    "position": 1
-  },
-  {
-    "id": "guitar-b-string-notes",
-    "instrument": "guitar",
-    "title": "Notes on the B string",
-    "description": "B, C and D, then mix them with the high E string.",
-    "level": 1,
-    "steps": [
-      {
-        "kind": "notes",
-        "instruction": "Play B (open), C (fret 1), D (fret 3) on the B string.",
-        "notes": [
-          "B3",
-          "C4",
-          "D4"
-        ]
-      },
-      {
-        "kind": "notes",
-        "instruction": "Walk up across both strings.",
-        "notes": [
-          "B3",
           "C4",
           "D4",
-          "E4",
-          "F4",
-          "G4"
-        ]
-      }
-    ],
-    "position": 2
-  },
-  {
-    "id": "guitar-em-chord",
-    "instrument": "guitar",
-    "title": "Your first chord: E minor",
-    "description": "Two fingers, six strings.",
-    "level": 1,
-    "steps": [
-      {
-        "kind": "info",
-        "title": "E minor shape",
-        "text": "Put finger 2 on the A string, fret 2, and finger 3 on the D string, fret 2. Every other string is open. The app hears one note at a time, so you will check the chord by plucking each string slowly."
-      },
-      {
-        "kind": "notes",
-        "instruction": "Hold the shape and pluck each string, thickest first.",
-        "notes": [
-          "E2",
-          "B2",
-          "E3",
-          "G3",
-          "B3",
           "E4"
+        ],
+        "hints": [
+          "jin",
+          "gle",
+          "all",
+          "the",
+          "way"
         ]
-      }
-    ],
-    "position": 3
-  },
-  {
-    "id": "guitar-c-chord",
-    "instrument": "guitar",
-    "title": "C major chord",
-    "description": "Three fingers, five strings.",
-    "level": 2,
-    "steps": [
-      {
-        "kind": "info",
-        "title": "C major shape",
-        "text": "Finger 3 on the A string, fret 3. Finger 2 on the D string, fret 2. Finger 1 on the B string, fret 1. Don’t play the thick low E string."
       },
       {
         "kind": "notes",
-        "instruction": "Hold the shape and pluck strings 5 to 1.",
+        "instruction": "Oh what fun it is to ride",
+        "notes": [
+          "F4",
+          "F4",
+          "F4",
+          "F4",
+          "F4",
+          "E4",
+          "E4"
+        ],
+        "hints": [
+          "Oh",
+          "what",
+          "fun",
+          "it",
+          "is",
+          "to",
+          "ride"
+        ]
+      },
+      {
+        "kind": "notes",
+        "instruction": "In a one-horse open sleigh",
+        "notes": [
+          "E4",
+          "E4",
+          "D4",
+          "D4",
+          "E4",
+          "D4",
+          "G4"
+        ],
+        "hints": [
+          "in",
+          "a",
+          "one",
+          "horse",
+          "o",
+          "pen",
+          "sleigh"
+        ]
+      }
+    ],
+    "position": 5
+  },
+  {
+    "id": "piano-twinkle",
+    "instrument": "piano",
+    "title": "Twinkle Twinkle Little Star",
+    "level": 1,
+    "description": "Stretch from C up to A and back.",
+    "steps": [
+      {
+        "kind": "info",
+        "title": "Hand position",
+        "text": "Start with your thumb on C. To reach A, let your little finger stretch one key past G."
+      },
+      {
+        "kind": "notes",
+        "instruction": "Twinkle twinkle little star",
+        "notes": [
+          "C4",
+          "C4",
+          "G4",
+          "G4",
+          "A4",
+          "A4",
+          "G4"
+        ],
+        "hints": [
+          "Twin",
+          "kle",
+          "twin",
+          "kle",
+          "lit",
+          "tle",
+          "star"
+        ]
+      },
+      {
+        "kind": "notes",
+        "instruction": "How I wonder what you are",
+        "notes": [
+          "F4",
+          "F4",
+          "E4",
+          "E4",
+          "D4",
+          "D4",
+          "C4"
+        ],
+        "hints": [
+          "how",
+          "I",
+          "won",
+          "der",
+          "what",
+          "you",
+          "are"
+        ]
+      },
+      {
+        "kind": "notes",
+        "instruction": "Up above the world so high",
+        "notes": [
+          "G4",
+          "G4",
+          "F4",
+          "F4",
+          "E4",
+          "E4",
+          "D4"
+        ],
+        "hints": [
+          "Up",
+          "a",
+          "bove",
+          "the",
+          "world",
+          "so",
+          "high"
+        ]
+      },
+      {
+        "kind": "notes",
+        "instruction": "Like a diamond in the sky",
+        "notes": [
+          "G4",
+          "G4",
+          "F4",
+          "F4",
+          "E4",
+          "E4",
+          "D4"
+        ],
+        "hints": [
+          "like",
+          "a",
+          "dia",
+          "mond",
+          "in",
+          "the",
+          "sky"
+        ]
+      }
+    ],
+    "position": 6
+  },
+  {
+    "id": "piano-left-hand",
+    "instrument": "piano",
+    "title": "Left hand C position",
+    "level": 2,
+    "description": "Wake up your left hand, an octave below middle C.",
+    "steps": [
+      {
+        "kind": "info",
+        "title": "Left hand",
+        "text": "Put your left little finger (5) on the C below middle C, then one finger on each white key up to G, where your thumb (1) rests."
+      },
+      {
+        "kind": "notes",
+        "instruction": "Play up from C to G",
+        "notes": [
+          "C3",
+          "D3",
+          "E3",
+          "F3",
+          "G3"
+        ],
+        "hints": [
+          "5",
+          "4",
+          "3",
+          "2",
+          "1"
+        ]
+      },
+      {
+        "kind": "notes",
+        "instruction": "And back down",
+        "notes": [
+          "G3",
+          "F3",
+          "E3",
+          "D3",
+          "C3"
+        ],
+        "hints": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      {
+        "kind": "notes",
+        "instruction": "Skip around",
         "notes": [
           "C3",
           "E3",
           "G3",
-          "C4",
-          "E4"
+          "E3",
+          "C3"
+        ],
+        "hints": [
+          "5",
+          "3",
+          "1",
+          "3",
+          "5"
         ]
       }
     ],
-    "position": 4
+    "position": 7
+  },
+  {
+    "id": "piano-happy-birthday",
+    "instrument": "piano",
+    "title": "Happy Birthday",
+    "level": 2,
+    "description": "Big jumps and your first black key, B flat.",
+    "steps": [
+      {
+        "kind": "notes",
+        "instruction": "Happy birthday to you",
+        "notes": [
+          "C4",
+          "C4",
+          "D4",
+          "C4",
+          "F4",
+          "E4"
+        ],
+        "hints": [
+          "Hap",
+          "py",
+          "birth",
+          "day",
+          "to",
+          "you"
+        ]
+      },
+      {
+        "kind": "notes",
+        "instruction": "Happy birthday to you",
+        "notes": [
+          "C4",
+          "C4",
+          "D4",
+          "C4",
+          "G4",
+          "F4"
+        ],
+        "hints": [
+          "Hap",
+          "py",
+          "birth",
+          "day",
+          "to",
+          "you"
+        ]
+      },
+      {
+        "kind": "notes",
+        "instruction": "Happy birthday dear friend",
+        "notes": [
+          "C4",
+          "C4",
+          "C5",
+          "A4",
+          "F4",
+          "E4",
+          "D4"
+        ],
+        "hints": [
+          "Hap",
+          "py",
+          "birth",
+          "day",
+          "dear",
+          "fri",
+          "end"
+        ]
+      },
+      {
+        "kind": "info",
+        "title": "A black key",
+        "text": "B flat is the black key just left of B. Reach it with your fourth finger."
+      },
+      {
+        "kind": "notes",
+        "instruction": "Happy birthday to you",
+        "notes": [
+          "A#4",
+          "A#4",
+          "A4",
+          "F4",
+          "G4",
+          "F4"
+        ],
+        "hints": [
+          "Hap",
+          "py",
+          "birth",
+          "day",
+          "to",
+          "you"
+        ]
+      }
+    ],
+    "position": 8
+  },
+  {
+    "id": "piano-c-scale",
+    "instrument": "piano",
+    "title": "The C major scale",
+    "level": 2,
+    "description": "Eight notes with the thumb-under trick.",
+    "steps": [
+      {
+        "kind": "info",
+        "title": "Thumb under",
+        "text": "Play C, D, E with fingers 1, 2, 3. Then tuck your thumb under to play F, and carry on with 2, 3, 4, 5 up to the next C."
+      },
+      {
+        "kind": "notes",
+        "instruction": "Up the scale",
+        "notes": [
+          "C4",
+          "D4",
+          "E4",
+          "F4",
+          "G4",
+          "A4",
+          "B4",
+          "C5"
+        ],
+        "hints": [
+          "1",
+          "2",
+          "3",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+        ]
+      },
+      {
+        "kind": "notes",
+        "instruction": "Back down: cross finger 3 over the thumb after F",
+        "notes": [
+          "C5",
+          "B4",
+          "A4",
+          "G4",
+          "F4",
+          "E4",
+          "D4",
+          "C4"
+        ],
+        "hints": [
+          "5",
+          "4",
+          "3",
+          "2",
+          "1",
+          "3",
+          "2",
+          "1"
+        ]
+      }
+    ],
+    "position": 9
   },
   {
     "id": "voice-match-pitch",
@@ -652,5 +1286,321 @@
       }
     ],
     "position": 3
+  },
+  {
+    "id": "voice-low-warmup",
+    "instrument": "voice",
+    "title": "Low warm-up",
+    "level": 1,
+    "description": "Slide gently down into your low voice.",
+    "steps": [
+      {
+        "kind": "info",
+        "title": "Relax",
+        "text": "Sing on a soft \"mmm\" or \"ah\". If a note feels too low, sing it an octave higher, the app still counts it."
+      },
+      {
+        "kind": "notes",
+        "instruction": "Step down",
+        "notes": [
+          "G3",
+          "F3",
+          "E3",
+          "D3",
+          "C3"
+        ]
+      },
+      {
+        "kind": "notes",
+        "instruction": "And back up",
+        "notes": [
+          "C3",
+          "D3",
+          "E3",
+          "F3",
+          "G3"
+        ]
+      }
+    ],
+    "position": 4
+  },
+  {
+    "id": "voice-sol-mi",
+    "instrument": "voice",
+    "title": "Sol and Mi",
+    "level": 1,
+    "description": "The playground call: \"Ol-ly ol-ly\".",
+    "steps": [
+      {
+        "kind": "notes",
+        "instruction": "Sing the two notes",
+        "notes": [
+          "G4",
+          "E4",
+          "G4",
+          "E4"
+        ],
+        "hints": [
+          "Ol",
+          "ly",
+          "ol",
+          "ly"
+        ]
+      },
+      {
+        "kind": "notes",
+        "instruction": "Add La on top",
+        "notes": [
+          "G4",
+          "G4",
+          "E4",
+          "A4",
+          "G4",
+          "E4"
+        ],
+        "hints": [
+          "Rain",
+          "rain",
+          "go",
+          "a",
+          "way",
+          "now"
+        ]
+      }
+    ],
+    "position": 5
+  },
+  {
+    "id": "voice-mary",
+    "instrument": "voice",
+    "title": "Mary Had a Little Lamb",
+    "level": 1,
+    "description": "Sing a whole song with words.",
+    "steps": [
+      {
+        "kind": "notes",
+        "instruction": "First line",
+        "notes": [
+          "E4",
+          "D4",
+          "C4",
+          "D4",
+          "E4",
+          "E4",
+          "E4"
+        ],
+        "hints": [
+          "Ma",
+          "ry",
+          "had",
+          "a",
+          "lit",
+          "tle",
+          "lamb"
+        ]
+      },
+      {
+        "kind": "notes",
+        "instruction": "Second line",
+        "notes": [
+          "D4",
+          "D4",
+          "D4",
+          "E4",
+          "G4",
+          "G4"
+        ],
+        "hints": [
+          "lit",
+          "tle",
+          "lamb",
+          "lit",
+          "tle",
+          "lamb"
+        ]
+      },
+      {
+        "kind": "notes",
+        "instruction": "Third line",
+        "notes": [
+          "E4",
+          "D4",
+          "C4",
+          "D4",
+          "E4",
+          "E4",
+          "E4",
+          "E4"
+        ],
+        "hints": [
+          "Ma",
+          "ry",
+          "had",
+          "a",
+          "lit",
+          "tle",
+          "lamb, its",
+          "fleece"
+        ]
+      },
+      {
+        "kind": "notes",
+        "instruction": "Last line",
+        "notes": [
+          "D4",
+          "D4",
+          "E4",
+          "D4",
+          "C4"
+        ],
+        "hints": [
+          "was",
+          "white",
+          "as",
+          "snow",
+          "…"
+        ]
+      }
+    ],
+    "position": 6
+  },
+  {
+    "id": "voice-arpeggio",
+    "instrument": "voice",
+    "title": "Jumping notes",
+    "level": 2,
+    "description": "Leap up and down a chord: do, mi, sol, do.",
+    "steps": [
+      {
+        "kind": "info",
+        "title": "Leaps",
+        "text": "So far you sang neighbouring notes. Now skip some. Hear the note in your head before you sing it."
+      },
+      {
+        "kind": "notes",
+        "instruction": "Up the chord",
+        "notes": [
+          "C4",
+          "E4",
+          "G4",
+          "C5"
+        ],
+        "hints": [
+          "do",
+          "mi",
+          "sol",
+          "do"
+        ]
+      },
+      {
+        "kind": "notes",
+        "instruction": "Down the chord",
+        "notes": [
+          "C5",
+          "G4",
+          "E4",
+          "C4"
+        ],
+        "hints": [
+          "do",
+          "sol",
+          "mi",
+          "do"
+        ]
+      }
+    ],
+    "position": 7
+  },
+  {
+    "id": "voice-happy-birthday",
+    "instrument": "voice",
+    "title": "Happy Birthday",
+    "level": 2,
+    "description": "Sing it properly at the next party.",
+    "steps": [
+      {
+        "kind": "notes",
+        "instruction": "Happy birthday to you",
+        "notes": [
+          "C4",
+          "C4",
+          "D4",
+          "C4",
+          "F4",
+          "E4"
+        ],
+        "hints": [
+          "Hap",
+          "py",
+          "birth",
+          "day",
+          "to",
+          "you"
+        ]
+      },
+      {
+        "kind": "notes",
+        "instruction": "Happy birthday to you",
+        "notes": [
+          "C4",
+          "C4",
+          "D4",
+          "C4",
+          "G4",
+          "F4"
+        ],
+        "hints": [
+          "Hap",
+          "py",
+          "birth",
+          "day",
+          "to",
+          "you"
+        ]
+      },
+      {
+        "kind": "notes",
+        "instruction": "Happy birthday dear friend: the big jump",
+        "notes": [
+          "C4",
+          "C4",
+          "C5",
+          "A4",
+          "F4",
+          "E4",
+          "D4"
+        ],
+        "hints": [
+          "Hap",
+          "py",
+          "birth",
+          "day",
+          "dear",
+          "fri",
+          "end"
+        ]
+      },
+      {
+        "kind": "notes",
+        "instruction": "Happy birthday to you",
+        "notes": [
+          "A#4",
+          "A#4",
+          "A4",
+          "F4",
+          "G4",
+          "F4"
+        ],
+        "hints": [
+          "Hap",
+          "py",
+          "birth",
+          "day",
+          "to",
+          "you"
+        ]
+      }
+    ],
+    "position": 8
   }
 ]
